@@ -14,13 +14,13 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "exctl"
-  gem.homepage = "http://github.com/josephwecker/exctl"
-  gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "joseph.wecker@gmail.com"
-  gem.authors = ["Joseph Wecker"]
+  gem.name        = "exctl"
+  gem.homepage    = "http://github.com/josephwecker/exctl"
+  gem.license     = "MIT"
+  gem.summary     = %Q{Project-specific command-line task dispatcher generator.}
+  gem.description = %Q{Allows you to create a command-line dispatcher for a project to consolidate dev, release, and runtime workflows.}
+  gem.email       = "joseph.wecker@gmail.com"
+  gem.authors     = ["Joseph Wecker"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
