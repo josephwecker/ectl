@@ -1,9 +1,10 @@
 
 
-
-
+why?
+----
 
 because I've done this over and over again:
+
   - rake wrapper I did for jtv-web project (probably prettiest)
   - imb- earlier metacon-like, then current dispatcher (most complete)
   - quick command wrapper I did for fxsig
@@ -12,6 +13,18 @@ because I've done this over and over again:
   - lots of custom vim stuff that started to be a lot more project-aware
   - I believe I might have even done one for zerl back in the day...
   - not by me: rake, make, git, rebar, rvm, reltools output ctl script, most init.d type scripts...
+
+
+
+meta-exctl
+---------
+ - initiate project
+ - set up initial directory structure
+   - eventually different depending on various templates (e.g., erlang-apps, ruby gem, etc.)
+ - local version of exctl files
+ - create shell wrapper that has project-specific invocation name etc.
+ - command for dumping information about the project - including known tasks etc.
+
 
 aggregate features
 ------------------
