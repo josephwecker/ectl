@@ -11,6 +11,16 @@ runtime tasks (such as running the application).
 
 Why? Because I've reimplemented this so many times for specific projects that I'm finally abstracting it.
 
+
+command-line usage
+------------------
+
+`exctl init my-project`
+
+Inits (in this case) the current directory. Installs or updates local copies of exctl-dispatch and its auxiliary files.
+
+
+
 Copyright
 ---------
 
