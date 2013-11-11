@@ -10,3 +10,8 @@ This allows you to have development-related tasks, packaging/installing/deployme
 runtime tasks (such as running the application).
 
 Why? Because I've reimplemented this so many times for specific projects that I'm finally abstracting it.
+
+Copyright
+---------
+
+Copyright (c) 2013 Joseph Wecker. See LICENSE for further details.
