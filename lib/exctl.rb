@@ -22,9 +22,8 @@ module Exctl
       end
     end
 
-    def avail_cmds()
-      @avail_cmds ||= (self.methods-Object.methods).map(&:to_s).select{|m|m[0..3]=='cmd_'}.map{|m|m[4..-1]}
-    end
+    def avail_cmds; @avail_cmds ||= (self.methods-Object.methods).map(&:to_s).select{|m|m[0..3]=='cmd_'}.map{|m|m[4..-1]} end
+    def cmd_version; puts Exctl.version end
 
     def doc_help; 'Output this help.' end
     def cmd_help
@@ -34,15 +33,16 @@ module Exctl
       puts avail_cmds.map{|c| hc='doc_'+c; respond_to?(hc) ? '   ' + c.ljust(10) + ':  ' + send(hc) : nil}.compact.join("\n") + "\n\n"
     end
 
-    def cmd_version
-      puts Exctl.version
-    end
-
     def doc_init; 'BIN-NAME [DIR=.] - Creates/updates main ctl script and support files in the given DIR.' end
     def cmd_init
+      binname = @args.shift
+      dir     = @args.shift || '.'
+      if binname.nil?
+        $stderr.puts "ERROR: project/binary name not specified."
+        $stderr.puts "USAGE: exctl init BIN-NAME [DIR=.]"
+        exit 3
+      end
 
-      $stderr.puts "just kidding, not implemented yet."
-      exit 1
     end
   end
 end
