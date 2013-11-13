@@ -48,7 +48,7 @@ module Exctl
 
       LIB_DIR['**/**',false].each do |f|
         relative = f.short(LIB_DIR)
-        unless relative.to_s[0..0]=='.'
+        unless relative.to_s[0..0]=='.' || relative.to_s == 'exctl/cli.rb'
           dest = libdest ** relative
           if f.dir?
             $stderr.puts "  create dir:  #{dest}/"
@@ -68,4 +68,4 @@ module Exctl
 
     end
   end
-
+end
