@@ -65,7 +65,6 @@ module Exctl
       File.write(binname, dispatch_wrapper)
       $stderr.puts "  chmod  file: #{binname}"
       File.chmod(0774, binname)
-
     end
   end
 end
