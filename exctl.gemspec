@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "exctl"
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Joseph Wecker"]
-  s.date = "2013-11-12"
+  s.date = "2013-11-13"
   s.description = "Allows you to create a command-line dispatcher for a project to consolidate dev, release, and runtime workflows."
   s.email = "joseph.wecker@gmail.com"
   s.executables = ["exctl"]
@@ -31,7 +31,11 @@ Gem::Specification.new do |s|
     "exctl.gemspec",
     "lib/exctl.rb",
     "lib/exctl/cli.rb",
+    "lib/exctl/dispatch.rb",
+    "lib/shorthand.rb",
     "notes.md",
+    "templates/default-dot-commands.erb",
+    "templates/dispatch-wrapper.erb",
     "test/helper.rb",
     "test/test_exctl.rb"
   ]
