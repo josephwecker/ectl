@@ -1,4 +1,13 @@
 #!/usr/bin/env ruby
+
+# If you move the dispatch executable relative to the project root, change this. For example, if you move it into the
+# bin/ directory you'd want this to say '..'
+#
+RELATIVE_PROJ_ROOT_DIR = '.'
+
+require 'pathname'
+this_dir   = Pathname.new(File.expand_path(File.dirname(__FILE__))).realpath
+$PROJ_ROOT = File.expand_path(File.join(this_dir, RELATIVE_PROJ_ROOT_DIR))
 $LOAD_PATH.unshift File.join(File.expand_path(File.dirname(__FILE__)), ".exctl")
 require 'exctl_dispatch'
 Exctl::Dispatch::dispatch(ARGV)

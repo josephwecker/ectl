@@ -26,6 +26,43 @@ meta-exctl
  - command for dumping information about the project - including known tasks etc.
 
 
+commands
+--------
+
+- command
+  - description
+  - synopsis
+  - arguments
+    - name
+    - flag
+    - description
+    - value *
+    - default *
+    - validation-format *
+    - transform-format *
+
+
+
+files
+-----
+
+    PROJ-ROOT/<BIN-NAME>       (required)
+             /.exctl/*         (required)
+             /.commands        (not required, but default one on init)
+             /scripts/<CMDS>/* (ones with manifests after hashbang are included)
+
+
+eventually more seamless
+------------------------
+
+- Rakefile
+- Gemfile
+- Makefile
+- rebar.config
+- .rvmrc
+- ...
+
+
 aggregate features
 ------------------
 

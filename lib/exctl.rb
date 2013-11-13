@@ -1,4 +1,7 @@
 module Exctl
+  require 'shorthand'
+
+  TEMPLATE_DIR = Path[File.dirname(__FILE__)] ** '..' ** 'templates'
   VERSION = File.exist?(File.join(File.dirname(__FILE__),'..','VERSION')) ? File.read(File.join(File.dirname(__FILE__),'..','VERSION')) : ""
   def self.version() Exctl::VERSION end
   def self.cli(argv) Exctl::CLI.new(argv).run! end
@@ -35,6 +38,7 @@ module Exctl
 
     def doc_init; 'BIN-NAME [DIR=.] - Creates/updates main ctl script and support files in the given DIR.' end
     def cmd_init
+      require 'erb'
       binname = @args.shift
       dir     = @args.shift || '.'
       if binname.nil?
@@ -43,6 +47,9 @@ module Exctl
         exit 3
       end
 
+      Path["./.exctl"].dir!
+      t = ERB.new(TEMPLATE_DIR ** 'dispatch-wrapper.erb')
+      
     end
   end
 end
