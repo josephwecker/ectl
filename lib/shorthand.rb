@@ -118,7 +118,7 @@ unless defined?(Path)
     def real()  begin exp.realpath rescue exp end   end
     def dir()   (exp.dir? || to_s[-1].chr == '/') ? exp : exp.dirname end
     def dir!()  (exp.mkpath unless exp.dir? rescue return nil); self end
-    def [](p)   Path.glob((dir + p.to_s).to_s, File::FNM_DOTMATCH)  end
+    def [](p,dots=true)   Path.glob((dir + p.to_s).to_s, dots ? File::FNM_DOTMATCH : 0)  end
     def older_than?(p) self.stat.mtime < p.stat.mtime end
     def missing?() !self.exist? end
     def as_other(new_dir, new_ext=nil)
@@ -133,6 +133,7 @@ unless defined?(Path)
       r = r.sub(ENV['HOME'],'~') if home
       r
     end
+    def contents; IO.read(self) end
     def different_contents?(str) IO.read(self).strip != str.strip end
     def short(p=nil,home=true)
       p ||= ($pwd || Path.pwd)
