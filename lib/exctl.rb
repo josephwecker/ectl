@@ -1,9 +1,14 @@
 module Exctl
   require 'shorthand'
 
-  TEMPLATE_DIR = Path[File.dirname(__FILE__)] ** '..' ** 'templates'
-  VERSION = File.exist?(File.join(File.dirname(__FILE__),'..','VERSION')) ? File.read(File.join(File.dirname(__FILE__),'..','VERSION')) : ""
+  LIB_DIR      = Path[File.dirname(__FILE__)]
+  TEMPLATE_DIR = (LIB_DIR ** '..') ** 'templates'
+
+
+  VFILE        = (LIB_DIR ** '..') ** 'VERSION'
+  VERSION      = VFILE.exists? ? VFILE.read : ''
   def self.version() Exctl::VERSION end
+
   def self.cli(argv) Exctl::CLI.new(argv).run! end
 
   class CLI
@@ -47,9 +52,32 @@ module Exctl
         exit 3
       end
 
-      Path["./.exctl"].dir!
-      t = ERB.new(TEMPLATE_DIR ** 'dispatch-wrapper.erb')
-      
+      b = binding
+
+      libdest = Path["./.exctl"]
+      $stderr.puts "  create dir:  #{libdest}/"
+      libdest.dir!
+
+      LIB_DIR['**/**',false].each do |f|
+        relative = f.short(LIB_DIR)
+        unless relative.to_s[0..0]=='.'
+          dest = libdest ** relative
+          if f.dir?
+            $stderr.puts "  create dir:  #{dest}/"
+            dest.dir!
+          else
+            $stderr.puts "  create file: #{dest}"
+            system "cp", f, dest
+          end
+        end
+      end
+
+      $stderr.puts "  create file: #{binname}"
+      dispatch_wrapper = ERB.new(File.read(TEMPLATE_DIR ** 'dispatch-wrapper.erb')).result(b)
+      File.write(binname, dispatch_wrapper)
+      $stderr.puts "  chmod  file: #{binname}"
+      File.chmod(0774, binname)
+
     end
   end
 end
