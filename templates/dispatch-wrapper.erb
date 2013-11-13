@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.join(File.expand_path(File.dirname(__FILE__)), ".exctl")
+require 'exctl_dispatch'
+Exctl::Dispatch::dispatch(ARGV)
