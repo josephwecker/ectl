@@ -11,4 +11,4 @@ $PROJ_ROOT = File.expand_path(File.join(this_dir, RELATIVE_PROJ_ROOT_DIR))
 $LOAD_PATH.unshift File.join(File.expand_path(File.dirname(__FILE__)), ".exctl")
 require 'exctl'
 require 'exctl/dispatch'
-Exctl::Dispatch::dispatch(ARGV)
+Exctl::Dispatch::dispatch($PROJ_ROOT, ARGV)
