@@ -5,7 +5,7 @@ module Exctl
     def self.dispatch(proj_root, args)
       commands = Exctl::Commands.new(proj_root)
 
-      pp commands.to_a
+      pp commands.map{|c| c.full_name}
     end
   end
 end

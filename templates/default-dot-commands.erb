@@ -1,8 +1,85 @@
+#  
+#  all|dev|tst|loc|srv
+#  -------------------
+#  
+#    - (ideally) determine which commands are available
+#    - determine rebar.config parameters
+#    - determine ...app parameters
+#    - determine app configurations
+#    - determine reltool.config configurations
+#    - allow / disallow various generated-node control commands
+#    - possibly different sanity checks (for example) in runtime system itself
+#  
+#  
+#  (all processes)
+#  ---------------
+#    - semantic versioning and version awareness
+#  
+#  immersion process
+#  -----------------
+#  
+#  iteration process
+#  -----------------
+#  
+#    - *bump major/minor/build number*
+#      - rejects if git not ready
+#      - possibly ensures that various checks and reports built? (bump compliance policy)
+#      - sets correct tag for git
+#      - ideally simple build part of vsn is # of commits since last tag
+#      - also sets it in all the appropriate files (erlang, release-related, etc.)
+#  
+#      - per major/minor/build
+#        - compliance tests that must pass
+#          - certain percent coverage
+#          - certain tests passing
+#          - xref tests passing
+#          - dialyzer analysis all passing
+#          - in-app sanity tests
+#          - quickcheck style tests (proper)
+#          - source-code formatting (erl_tidy?)
+#        - other reports (often can be generated simultaneously- for example profiling during quickcheck)
+#          - tests / sanity tests / coverage (etc. from above but w/o killing bump)
+#          - profiling results (percept, fprof, eprof, cover, cprof)
+#          - benchmark results (statistics(runtime)., timer:tc/3)
+#        - documentation generates & is relevant (test somehow?)
+#  
+#  deployment process
+#  ------------------
+#    - 
+#  
+#  maintenance process
+#  -------------------
+#
+#
+#
+
+
+# version
+# version.bump.major
+# version.bump.minor
+# version.bump.patch
+#
+# -- if rebar detected --
+# rebar:*
+#
+# deps
+# deps.get  (tests them afterward also)
+# deps.compile
+# deps.update
+# deps.clean
+# deps.unlock
+# deps.rm
+#
+# test [suites=SUITES] [tests=TESTS]
 # 
+# test:dialyzer
+# test:
 #
 #
-
-
-
-command :help
-
+# run
+# run:... (from node)
+#
+#
+# ------ erlang
+# annotation for functions that should only be exported when unit testing
+#
