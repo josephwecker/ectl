@@ -1,4 +1,17 @@
 
+
+
+current objectives
+------------------
+
+e : general purpose project-specific command launcher
+
+.exctl
+  Allow simple mapping
+
+
+
+
 why?
 ----
 
